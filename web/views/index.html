@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <h1>豆瓣最热电影：</h1>
+    <ul class="screening">
+      <% for(var i = 0; i < movies.length; i ++) { 
+          let movie = movies[i]
+      %>
+      <li class="ui-slide-item">
+        <ul>
+          <li class="poster">
+            <a href="<%=movie.href%>">
+              <img width="200" height="400" src="<%=movie.image%>" alt="">
+            </a>
+          </li>
+          <li class="title">
+            <a href="<%=movie.href%>"><%=movie.name%></a>
+          </li>
+          <li class="rating">
+            <span class="star"></span>
+            <span class="subject-rate"><%=movie.score%></span>
+          </li>
+          <li class="ticket_btn">
+            <span>
+              <a href="<%=movie.href%>">选座购票</a>
+            </span>
+          </li>
+        </ul>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</body>
+</html>

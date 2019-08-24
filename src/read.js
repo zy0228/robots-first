@@ -1,6 +1,6 @@
 const rp = require('request-promise')
 const cheerio = require('cheerio')
-const debug = require('debug')
+const debug = require('debug')('movies:read')
 
 const read = (url) => {
   debug(`开始读取~O(∩_∩)O~`)
@@ -15,15 +15,16 @@ const read = (url) => {
   return rp(opts).then($ => {
     let result = []
 
-    $('#screeing li.ui-side-item').each((index, el) => {
+    $('#screening li.ui-slide-item').each((index, item) => {
+      let el = $(item)
       let name = el.data('title')
-      let score = el.data('rate') && `暂无评分~`
+      let score = el.data('rate') || `暂无评分~`
       let href = el.find('.poster a').attr('href')
       /**id可以在href的地址里面拿到 */
       let id = href && href.match(/(\d+)/)[1]
-      let image = el.find('.poster image').attr('src')
+      let image = el.find('.poster img').attr('src')
       /**转换图片的格式为webp 防止裂图*/
-      image = iamge && image.replace(/ipg$/, 'webp')
+      image = image && image.replace(/jpg$/, 'webp')
 
       if (!image || !name || !href) {
         return
