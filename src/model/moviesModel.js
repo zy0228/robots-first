@@ -1,9 +1,11 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-mongoose.connect('mongodb://127.0.0.1:27017/robots', {useNewUrlParser: true})
+mongoose.connect('mongodb://127.0.0.1:27017/robots', {useNewUrlParser: true}, (err) => {
+  if (err) console.log(err)
+})
 
-var moviesDB = new Schema({
+let MovieSchema = new Schema({
   "id": String,
   "name": String,
   "href": String,
@@ -11,4 +13,4 @@ var moviesDB = new Schema({
   'score': String
 })
 
-module.exports = mongoose.model("movies", moviesDB)
+module.exports = mongoose.model("movies", MovieSchema)

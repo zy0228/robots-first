@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    .screening {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .ui-slide-item {
+      width: 220px;
+      height: 320px;
+    }
+    
+    img {
+      width: 220px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -14,7 +28,7 @@
           let movie = movies[i]
       %>
       <li class="ui-slide-item">
-        <ul>
+        <ul style="display: flex">
           <li class="poster">
             <a href="<%=movie.href%>">
               <img width="200" height="400" src="<%=movie.image%>" alt="">
