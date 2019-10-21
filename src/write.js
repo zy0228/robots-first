@@ -15,7 +15,7 @@ const write = async (movies) => {
     }
 
     if (oldMovie) {
-      await MovieSchema.update({id: movie.id}, obj, err => {
+      await MovieSchema.updateOne({id: movie.id}, obj, err => {
         if(err) debug(`error：${err}`)
       })
     } else {

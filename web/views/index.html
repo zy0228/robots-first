@@ -11,27 +11,59 @@
       flex-wrap: wrap;
     }
     .ui-slide-item {
-      width: 220px;
-      height: 320px;
+      width: 160px;
+      margin: 15px;
+    }
+
+    .ui-slide-item ul{
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ui-slide-item ul .poster {
+      height: 161px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .ui-slide-item ul .title {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .ui-slide-item ul .poster img {
+      width: 128px;
+    }
+
+    a {
+      text-decoration: none;
+      color: blueviolet;
+    }
+
+    a img {
+      border-width: 0;
+      vertical-align: middle;
     }
     
     img {
-      width: 220px;
+      max-width: 100%;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>豆瓣最热电影：</h1>
-    <ul class="screening">
+    <ul class="screening" style="list-style: none;">
       <% for(var i = 0; i < movies.length; i ++) { 
           let movie = movies[i]
       %>
       <li class="ui-slide-item">
-        <ul style="display: flex">
+        <ul>
           <li class="poster">
             <a href="<%=movie.href%>">
-              <img width="200" height="400" src="<%=movie.image%>" alt="">
+              <img src="https://images.weserv.nl/?url=<%=movie.image%>" alt="">
             </a>
           </li>
           <li class="title">
@@ -42,14 +74,19 @@
             <span class="subject-rate"><%=movie.score%></span>
           </li>
           <li class="ticket_btn">
-            <span>
-              <a href="<%=movie.href%>">选座购票</a>
-            </span>
+            <button style="border: none;background-color: #268dcd;">
+              <a style="color: #fff;" href="<%=movie.href%>">选座购票</a>
+            </button>
           </li>
         </ul>
       </li>
       <% } %>
     </ul>
+  </div>
+  <div>
+    <center>
+        <h4>power by snoop<br>github:https://github.com/zy0228</h4>
+    </center>
   </div>
 </body>
 </html>
